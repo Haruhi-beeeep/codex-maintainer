@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-from typing import Optional
+from typing import Any, Optional, cast
 
 import openai
 from rich.console import Console
@@ -37,12 +37,12 @@ def _get_pr_diff(pr: int, repo: Optional[str]) -> str:
     return result.stdout
 
 
-def _get_pr_metadata(pr: int, repo: Optional[str]) -> dict:
+def _get_pr_metadata(pr: int, repo: Optional[str]) -> dict[str, Any]:
     cmd = ["gh", "pr", "view", str(pr), "--json", "title,body,headRefName,baseRefName,author"]
     if repo:
         cmd += ["--repo", repo]
     result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    return json.loads(result.stdout)
+    return cast(dict[str, Any], json.loads(result.stdout))
 
 
 def _post_review_comment(pr: int, repo: Optional[str], body: str) -> None:

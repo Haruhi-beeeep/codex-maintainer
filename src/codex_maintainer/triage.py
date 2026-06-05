@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-from typing import Optional
+from typing import Any, Optional, cast
 
 import openai
 from pydantic import BaseModel
@@ -44,12 +44,12 @@ class TriageResult(BaseModel):
     complexity: str
 
 
-def _get_issue_data(issue: int, repo: Optional[str]) -> dict:
+def _get_issue_data(issue: int, repo: Optional[str]) -> dict[str, Any]:
     cmd = ["gh", "issue", "view", str(issue), "--json", "title,body,author,createdAt"]
     if repo:
         cmd += ["--repo", repo]
     result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    return json.loads(result.stdout)
+    return cast(dict[str, Any], json.loads(result.stdout))
 
 
 def _apply_labels(issue: int, repo: Optional[str], labels: list[str]) -> None:

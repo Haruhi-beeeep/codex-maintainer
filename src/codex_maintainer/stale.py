@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import subprocess
 from datetime import datetime, timedelta, timezone
-from typing import Optional
+from typing import Any, Optional, cast
 
 from rich.console import Console
 from rich.table import Table
@@ -19,7 +19,7 @@ _DEFAULT_COMMENT = (
 )
 
 
-def _list_open_issues(repo: Optional[str]) -> list[dict]:
+def _list_open_issues(repo: Optional[str]) -> list[dict[str, Any]]:
     cmd = [
         "gh", "issue", "list",
         "--state", "open",
@@ -29,7 +29,7 @@ def _list_open_issues(repo: Optional[str]) -> list[dict]:
     if repo:
         cmd += ["--repo", repo]
     result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    return json.loads(result.stdout)  # type: ignore[no-any-return]
+    return cast(list[dict[str, Any]], json.loads(result.stdout))
 
 
 def _add_label(issue_number: int, label: str, repo: Optional[str]) -> None:
@@ -53,7 +53,7 @@ def _close_issue(issue_number: int, repo: Optional[str]) -> None:
     subprocess.run(cmd, check=True)
 
 
-def _filter_stale(issues: list[dict], days: int) -> list[dict]:
+def _filter_stale(issues: list[dict[str, Any]], days: int) -> list[dict[str, Any]]:
     cutoff = datetime.now(timezone.utc) - timedelta(days=days)
     result = []
     for issue in issues:

@@ -11,16 +11,17 @@ Reads from (in priority order):
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
-try:
-    import tomllib  # Python 3.11+
-except ImportError:
+if sys.version_info >= (3, 11):
+    import tomllib
+else:
     try:
-        import tomli as tomllib  # type: ignore[no-redef]
+        import tomli as tomllib  # type: ignore[import-not-found]
     except ImportError:
-        tomllib = None  # type: ignore[assignment]
+        tomllib = None
 
 _SENTINEL = object()
 _cache: Optional[dict[str, Any]] = None
@@ -31,7 +32,7 @@ def _read_toml(path: Path) -> dict[str, Any]:
         return {}
     try:
         with open(path, "rb") as f:
-            return tomllib.load(f)  # type: ignore[union-attr]
+            return cast(dict[str, Any], tomllib.load(f))
     except Exception:
         return {}
 
