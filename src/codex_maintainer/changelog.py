@@ -12,7 +12,8 @@ from rich.markdown import Markdown
 
 console = Console()
 
-_SYSTEM_PROMPT = """You are an expert at writing clear, user-focused changelogs in Keep a Changelog format.
+_SYSTEM_PROMPT = """\
+You are an expert at writing clear, user-focused changelogs in Keep a Changelog format.
 
 Given git commit messages, generate a well-structured CHANGELOG section.
 

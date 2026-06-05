@@ -13,7 +13,8 @@ from rich.markdown import Markdown
 
 console = Console()
 
-_SYSTEM_PROMPT = """You are an expert code reviewer with deep knowledge of software engineering best practices.
+_SYSTEM_PROMPT = """\
+You are an expert code reviewer with deep knowledge of software engineering best practices.
 
 Review the provided pull request diff and provide thorough, actionable feedback.
 

@@ -3,10 +3,7 @@
 from __future__ import annotations
 
 import json
-import subprocess
 from unittest.mock import MagicMock, patch
-
-import pytest
 
 from codex_maintainer.review import _get_pr_diff, _get_pr_metadata
 

@@ -3,10 +3,7 @@
 from __future__ import annotations
 
 import json
-import subprocess
 from unittest.mock import MagicMock, patch
-
-import pytest
 
 from codex_maintainer.triage import TriageResult, _get_issue_data
 

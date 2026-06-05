@@ -12,7 +12,8 @@ from rich.markdown import Markdown
 
 console = Console()
 
-_SYSTEM_PROMPT = """You are an expert at writing engaging, user-friendly release notes for open source software.
+_SYSTEM_PROMPT = """\
+You are an expert at writing engaging, user-friendly release notes for open source software.
 
 Given git commits and a version number, write release notes that:
 - Open with a brief paragraph summarizing what this release brings

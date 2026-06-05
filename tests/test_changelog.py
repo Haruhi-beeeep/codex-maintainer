@@ -5,9 +5,7 @@ from __future__ import annotations
 import subprocess
 from unittest.mock import MagicMock, patch
 
-import pytest
-
-from codex_maintainer.changelog import _get_latest_tag, _get_git_log
+from codex_maintainer.changelog import _get_git_log, _get_latest_tag
 
 
 def test_get_latest_tag_returns_tag_string():

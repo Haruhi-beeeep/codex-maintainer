@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "codex-maintainer"
-version = "0.1.0"
+version = "0.2.0"
 description = "AI-powered toolkit for OSS maintainers using OpenAI Codex"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -32,6 +32,7 @@ dependencies = [
     "gitpython>=3.1.0",
     "httpx>=0.24.0",
     "pydantic>=2.0.0",
+    "tomli>=2.0.0; python_version < '3.11'",
 ]
 
 [project.optional-dependencies]

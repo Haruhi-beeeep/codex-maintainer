@@ -17,7 +17,8 @@ console = Console()
 _SYSTEM_PROMPT = """You are an expert OSS project triager.
 
 Analyze the GitHub issue and return a JSON object with exactly these fields:
-- "type": one of "bug", "feature", "question", "documentation", "performance", "security", "duplicate", "invalid"
+- "type": one of "bug", "feature", "question", "documentation", "performance", "security",
+  "duplicate", "invalid"
 - "priority": one of "critical", "high", "medium", "low"
 - "labels": list of 1-4 concise label strings (e.g. ["bug", "good first issue"])
 - "summary": one sentence summarizing the issue
@@ -112,4 +113,5 @@ def run_triage(issue: int, repo: Optional[str], model: str, apply: bool) -> None
                 _apply_labels(issue, repo, result.labels)
                 console.print(f"[green]Labels applied:[/green] {', '.join(result.labels)}")
             except subprocess.CalledProcessError as e:
-                console.print(f"[yellow]Could not apply labels (they may not exist yet):[/yellow] {e.stderr.strip()}")
+                msg = f"[yellow]Could not apply labels:[/yellow] {e.stderr.strip()}"
+                console.print(msg)

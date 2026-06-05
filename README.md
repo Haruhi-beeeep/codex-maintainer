@@ -19,6 +19,7 @@ Maintaining an open source project means reviewing PRs, triaging issues, writing
 | `codex-maintainer triage <issue>` | Classify, prioritize, and label GitHub issues automatically |
 | `codex-maintainer changelog` | Generate a Keep-a-Changelog from git commit history |
 | `codex-maintainer release <tag>` | Write release notes for a new version |
+| `codex-maintainer stale` | List (and optionally label/comment/close) stale issues |
 
 All commands work as a **CLI** and as **GitHub Actions** (drop-in workflows included).
 
@@ -52,6 +53,15 @@ codex-maintainer changelog
 
 # Generate release notes for v1.2.0
 codex-maintainer release v1.2.0
+
+# List issues inactive for 90+ days
+codex-maintainer stale
+
+# Label stale issues and post a comment (dry run first)
+codex-maintainer stale --days 60 --label stale --comment --dry-run
+
+# Apply for real
+codex-maintainer stale --days 60 --label stale --comment
 ```
 
 ## GitHub Actions (zero config)
@@ -110,16 +120,37 @@ Set `OPENAI_API_KEY` as a repository secret and you're done.
 
 ## Configuration
 
-All commands accept `--model` to choose the OpenAI model:
+### Config file
+
+Add a `[tool.codex-maintainer]` section to your `pyproject.toml`, or create a `.codex-maintainer.toml` in the project root:
+
+```toml
+# pyproject.toml
+[tool.codex-maintainer]
+model      = "gpt-4.1"        # default model for all commands
+repo       = "owner/myrepo"   # default GitHub repo
+stale_days = 60               # days before an issue is stale
+stale_label = "stale"         # label applied by `stale --label`
+# stale_comment = "Custom message..."
+```
+
+CLI flags always take precedence over the config file.
+
+### Environment variables
+
+`CODEX_MAINTAINER_MODEL` overrides the model for every command:
+
+```bash
+export CODEX_MAINTAINER_MODEL=gpt-4.1-mini
+```
+
+### Per-command flags
+
+All commands accept `--model` and `--repo`:
 
 ```bash
 codex-maintainer review 42 --model gpt-4.1
 codex-maintainer triage 7  --model gpt-4.1-mini
-```
-
-Use `--repo owner/name` to target a different GitHub repository:
-
-```bash
 codex-maintainer review 42 --repo myorg/myrepo
 ```
 
