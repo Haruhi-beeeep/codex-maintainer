@@ -48,10 +48,10 @@ dev = [
 codex-maintainer = "codex_maintainer.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/haruhi-abe/codex-maintainer"
-Repository = "https://github.com/haruhi-abe/codex-maintainer"
-Issues = "https://github.com/haruhi-abe/codex-maintainer/issues"
-Changelog = "https://github.com/haruhi-abe/codex-maintainer/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/Haruhi-beeeep/codex-maintainer"
+Repository = "https://github.com/Haruhi-beeeep/codex-maintainer"
+Issues = "https://github.com/Haruhi-beeeep/codex-maintainer/issues"
+Changelog = "https://github.com/Haruhi-beeeep/codex-maintainer/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/codex_maintainer"]

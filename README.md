@@ -2,7 +2,7 @@
 
 **AI-powered toolkit for OSS maintainers using OpenAI Codex.**
 
-[![CI](https://github.com/haruhi-abe/codex-maintainer/actions/workflows/ci.yml/badge.svg)](https://github.com/haruhi-abe/codex-maintainer/actions/workflows/ci.yml)
+[![CI](https://github.com/Haruhi-beeeep/codex-maintainer/actions/workflows/ci.yml/badge.svg)](https://github.com/Haruhi-beeeep/codex-maintainer/actions/workflows/ci.yml)
 [![PyPI version](https://badge.fury.io/py/codex-maintainer.svg)](https://badge.fury.io/py/codex-maintainer)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -165,7 +165,7 @@ It is designed to be **composable** — each command is independently useful as 
 Contributions are welcome. Please open an issue first to discuss significant changes.
 
 ```bash
-git clone https://github.com/haruhi-abe/codex-maintainer
+git clone https://github.com/Haruhi-beeeep/codex-maintainer
 cd codex-maintainer
 pip install -e ".[dev]"
 pytest tests/

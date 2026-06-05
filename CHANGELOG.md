@@ -43,5 +43,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI workflow (`ci.yml`) — lint, type-check, and test on Python 3.9–3.12
 - Automated triage workflow (`auto-triage.yml`) and review workflow (`auto-review.yml`)
 
-[0.2.0]: https://github.com/haruhi-abe/codex-maintainer/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/haruhi-abe/codex-maintainer/releases/tag/v0.1.0
+[0.2.0]: https://github.com/Haruhi-beeeep/codex-maintainer/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/Haruhi-beeeep/codex-maintainer/releases/tag/v0.1.0
